@@ -6,7 +6,7 @@
 
 ## Why this exists
 
-Frontier-scale transformer training often hits the **memory wall**: step time is limited by how fast bytes move through **HBM/GDDR**, not by peak TFLOPs. This project provides a compact model—both in equations and runnable Python—to:
+Frontier-scale transformer training often hits the **memory wall**: step time is limited by how fast bytes move through **HBM/GDDR**, not by peak TFLOPs. This project provides a compact model—both in math and code—to:
 
 * Diagnose whether a run is **compute**, **memory**, or **network** bound
 * Estimate **tokens/sec per GPU**, GPUs needed for a target throughput, and cluster **TB/s**
@@ -145,6 +145,13 @@ PRs and issues welcome! Ideas:
 
 ---
 
+## Project Files
+
+* [Sizing_AI_Training_by_Cost_per_Memory_Bandwidth.ipynb](./Sizing_AI_Training_by_Cost_per_Memory_Bandwidth.ipynb) — Main notebook with model and code.
+* [The KV Cache: What It Is, Why It Matters, and How to Size It for Modern LLMs](./The_KV_Cache_What_It_Is,_Why_It_Matters,_and_How_to_Size_It_for_Modern_LLMs.ipynb) — Deep dive notebook on KV cache sizing and implications for LLM inference.
+
+---
+
 ## References & further reading
 
 * Roofline model (compute vs memory bound) — Williams et al., *CACM* (2009)
@@ -179,6 +186,4 @@ If this helped your team ship or save money, feel free to cite the repo/blog pos
 
 ---
 
-Want me to tailor this README around your exact GPU catalog, prices, and a worked H100 vs H200 example (with numbers pre-filled)? I can drop that straight into the README text.
-
-[1]: https://github.com/jman4162/Sizing-AI-Training-by-Cost-per-Memory-Bandwidth/blob/main/Sizing_AI_Training_by_Cost_per_Memory_Bandwidth.ipynb "Sizing-AI-Training-by-Cost-per-Memory-Bandwidth/Sizing_AI_Training_by_Cost_per_Memory_Bandwidth.ipynb at main · jman4162/Sizing-AI-Training-by-Cost-per-Memory-Bandwidth · GitHub"
+[1]: https://github.com/jman4162/Sizing-AI-Training-by-Cost-per-Memory-Bandwidth/blob/main/Sizing_AI_Training_by_Cost_per_Memory_Bandwidth.ipynb "Sizing-AI-Training-by-Cost-per-Memory-Bandwidth/Sizing_AI_Training_by_Cost_per_Memory_Bandwidth.ipynb"
