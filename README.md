@@ -6,7 +6,7 @@
 
 ## Why this exists
 
-Frontier-scale transformer training often hits the **memory wall**: step time is limited by how fast bytes move through **HBM/GDDR**, not by peak TFLOPs. This project provides a compact model—both in math and code—to:
+Large transformer training is often shaped by data movement through **HBM/GDDR**, which can matter as much as peak TFLOPs. The binding constraint depends on the workload, though: some phases are compute-bound, some memory-bound, some network-bound. This project provides a compact model—both in math and code—to tell which:
 
 * Diagnose whether a run is **compute**, **memory**, or **network** bound
 * Estimate **tokens/sec per GPU**, GPUs needed for a target throughput, and cluster **TB/s**
@@ -67,6 +67,7 @@ jupyter lab
 ```python
 from dataclasses import dataclass
 from math import ceil
+from typing import Optional
 
 @dataclass
 class Hardware:
@@ -75,7 +76,10 @@ class Hardware:
     hbm_tbps: float
     nic_gbps: float
     price_per_gpu_hr: float
-    utilization: float = 0.75
+    utilization: float = 0.75            # default per-resource efficiency
+    compute_eff: Optional[float] = None  # override per resource; falls back to utilization
+    memory_eff: Optional[float] = None
+    network_eff: Optional[float] = None
 
 @dataclass
 class Model:
@@ -167,7 +171,7 @@ PRs and issues welcome! Ideas:
 
 ## License
 
-Specify a license for reuse (e.g., MIT or Apache-2.0). If you add a `LICENSE` file, link it here.
+This project is licensed under the MIT License. See [LICENSE](./LICENSE).
 
 ---
 
